@@ -1,0 +1,32 @@
+{% if request.ui == 'client-side' or request.ui == 'angular' %}
+{
+  "apps": [
+    {
+      "title": {
+        "pt-PT": "{{request.upperCamelCaseName}}",
+        "en-GB": "{{request.upperCamelCaseName}}"
+      },
+      "description": {
+        "pt-PT": "{{request.upperCamelCaseName}}",
+        "en-GB": "{{request.upperCamelCaseName}}"
+      },
+      "accessExpression": "logged",
+      "path": "{{request.artifactId}}",
+      "functionalities": [
+        {
+          "title": {
+            "pt-PT": "{{request.upperCamelCaseName}}",
+            "en-GB": "{{request.upperCamelCaseName}}"
+          },
+          "description": {
+            "pt-PT": "{{request.upperCamelCaseName}}",
+            "en-GB": "{{request.upperCamelCaseName}}"
+          },
+          "accessExpression": "logged",
+          "path": "#"
+        }
+      ]
+    }
+  ]
+}
+{% endif %}

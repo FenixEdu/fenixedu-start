@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FenixEdu Start</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
+</head>
+<body>
+<div th:include="header"></div>
+<div class="container-fluid">
+    <h2>Webapp</h2>
+
+    <form action="/webapp.zip" method="POST" class="form-horizontal">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Project Metadata</h3>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="groupId">Group Id</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="groupId" placeholder="Group Id" id="groupId"
+                               required="true" value="org.fenixedu"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="artifactId">Artifact Id</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="artifactId" placeholder="Artifact Id"
+                               id="artifactId" required="true" value="demo-webapp"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="name">Name</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="name" placeholder="Name"
+                               id="name" required="true" value="Demo Webapp"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="mavenVersion">FenixEdu Maven Version</label>
+
+                    <div class="col-md-8">
+                        <select class="form-control" id="mavenVersion" name="mavenVersion">
+                            <option th:each="version : ${versions['fenixedu-maven']}" th:value="${version}"
+                                    th:text="${version}">
+                                Version
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="bennuVersion">Bennu Version</label>
+
+                    <div class="col-md-8">
+                        <select class="form-control" id="bennuVersion" name="bennuVersion">
+                            <option th:each="version : ${versions['bennu']}" th:value="${version}"
+                                    th:text="${version}">
+                                Version
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h3>Project Configuration</h3>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="dbHost">Database Host</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="dbHost" placeholder="Database Host"
+                               id="dbHost" required="true" value="localhost"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="dbPort">Database Port</label>
+
+                    <div class="col-md-8">
+                        <input type="number" class="form-control" name="dbPort" placeholder="Database Port"
+                               id="dbPort" required="true" value="3306"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="dbName">Database Name</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="dbName" placeholder="Database Name"
+                               id="dbName" required="true" value="fenixedu"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="dbUser">Database User</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="dbUser" placeholder="Database User"
+                               id="dbUser" required="true" value="root"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="dbPassword">Database Password</label>
+
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" name="dbPassword" placeholder="Database Password"
+                               id="dbPassword"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <p class="text-center">
+                <button name="generate" type="submit" class="btn btn-lg btn-primary" role="button">
+                    <span class="glyphicon glyphicon-download"></span> Generate Project
+                </button>
+            </p>
+        </div>
+    </form>
+    <div th:include="footer"></div>
+</div>
+
+</body>
+</html>

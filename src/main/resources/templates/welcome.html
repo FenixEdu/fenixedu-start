@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FenixEdu Start</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
+</head>
+<body>
+<div th:include="header"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>FenixEdu Start</h2>
+
+            <p>
+                FenixEdu Start allows you to easily create a new FenixEdu Module or Web Application.
+            </p>
+
+            <p>
+                Use the options on the right to select the type of project you want to create.
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <h2>Module</h2>
+
+            <p>
+                Application modules are the building blocks of your application.
+            </p>
+
+            <p>
+                <a href="/module" class="btn btn-default" role="button">Module »</a>
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <h2>Web Application</h2>
+
+            <p>
+                Web applications contain all your installation's modules and the app's configuration.
+            </p>
+
+            <p>
+                <a href="/webapp" class="btn btn-default" role="button">Web App »</a>
+            </p>
+        </div>
+    </div>
+    <div th:include="footer"></div>
+</div>
+
+</body>
+</html>

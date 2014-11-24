@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.fenixedu</groupId>
+        <artifactId>fenix-framework-project</artifactId>
+        <version>{{request.mavenVersion}}</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>{{request.groupId}}</groupId>
+    <artifactId>{{request.artifactId}}</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>{{request.name}}</name>
+
+    <properties>
+        <version.org.fenixedu.bennu>{{request.bennuVersion}}</version.org.fenixedu.bennu>
+        {% if request.ui == 'bennu-spring' %}
+        <version.org.fenixedu.bennu.spring>{{api.versions['bennu-spring'] | latest}}</version.org.fenixedu.bennu.spring>
+        {% endif %}
+    </properties>
+
+    <dependencies>
+        {% for dep in request.bennu %}
+        <dependency>
+            <groupId>org.fenixedu</groupId>
+            <artifactId>{{dep}}</artifactId>
+            <version>${version.org.fenixedu.bennu}</version>
+        </dependency>
+        {% endfor %}
+        {% if request.ui == 'bennu-spring' %}
+        <dependency>
+            <groupId>org.fenixedu</groupId>
+            <artifactId>bennu-spring</artifactId>
+            <version>${version.org.fenixedu.bennu.spring}</version>
+        </dependency>
+        {% endif %}
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>fenixedu-maven-repository</id>
+            <url>https://repo.fenixedu.org/fenixedu-maven-repository</url>
+        </repository>
+    </repositories>
+</project>

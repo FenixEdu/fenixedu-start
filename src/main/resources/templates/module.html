@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FenixEdu Start</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
+</head>
+<body>
+<div th:include="header"></div>
+<div class="container-fluid">
+    <h2>Module</h2>
+    <form action="/module.zip" method="POST" class="form-horizontal">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Project Metadata</h3>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="groupId">Group Id</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="groupId" placeholder="Group Id" id="groupId"
+                               required="true" value="org.fenixedu"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="artifactId">Artifact Id</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="artifactId" placeholder="Artifact Id"
+                               id="artifactId" required="true" value="demo"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="name">Name</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="name" placeholder="Name"
+                               id="name" required="true" value="Demo Project"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="packageName">Package Name</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="packageName" placeholder="Package Name"
+                               id="packageName" required="true" value="org.fenixedu.demo"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="mavenVersion">FenixEdu Maven Version</label>
+
+                    <div class="col-md-8">
+                        <select class="form-control" id="mavenVersion" name="mavenVersion">
+                            <option th:each="version : ${versions['fenixedu-maven']}" th:value="${version}"
+                                    th:text="${version}">
+                                Version
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="bennuVersion">Bennu Version</label>
+
+                    <div class="col-md-8">
+                        <select class="form-control" id="bennuVersion" name="bennuVersion">
+                            <option th:each="version : ${versions['bennu']}" th:value="${version}"
+                                    th:text="${version}">
+                                Version
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-offset-3 col-md-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" checked="checked" name="generateDml"/> Generate DML
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h3>Project Dependencies</h3>
+
+                <div class="form-group col-sm-6">
+                    <h4>Bennu</h4>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="bennu" value="bennu-core" checked="true"/> Bennu Core
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="bennu" value="bennu-io"/> Bennu IO
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="bennu" value="bennu-scheduler"/> Bennu Scheduler
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="bennu" value="bennu-portal"/> Bennu Portal
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <h4>UI</h4>
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="ui" value="bennu-spring" checked="true"/> Bennu Spring
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="ui" value="client-side"/> Client Side
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="ui" value="angular"/> AngularJS
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <p class="text-center">
+                <button name="generate" type="submit" class="btn btn-lg btn-primary" role="button">
+                    <span class="glyphicon glyphicon-download"></span> Generate Project
+                </button>
+            </p>
+        </div>
+    </form>
+    <div th:include="footer"></div>
+</div>
+
+</body>
+</html>

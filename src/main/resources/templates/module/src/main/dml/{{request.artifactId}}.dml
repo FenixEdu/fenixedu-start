@@ -1,0 +1,3 @@
+{% if request.generateDml %}
+package {{request.packageName}}.domain;
+{% endif %}
