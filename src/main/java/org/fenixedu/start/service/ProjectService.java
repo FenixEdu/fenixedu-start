@@ -31,6 +31,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -78,7 +79,7 @@ public class ProjectService {
     }
 
     private String getFilePath(Resource resource, String type) throws IOException {
-        String path = resource.getURI().getPath();
+        String path = URLDecoder.decode(resource.getURL().getPath(), "UTF-8");
         return path.substring(path.indexOf("/templates/" + type + "/") + ("/templates/" + type + "/").length());
     }
 
