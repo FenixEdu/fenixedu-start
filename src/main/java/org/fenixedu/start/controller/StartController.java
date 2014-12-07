@@ -100,7 +100,7 @@ public class StartController {
         ZipOutputStream zip = new ZipOutputStream(stream);
 
         for (Map.Entry<String, byte[]> mapEntry : project.entrySet()) {
-            ZipEntry entry = new ZipEntry(mapEntry.getKey());
+            ZipEntry entry = new ZipEntry(request.getArtifactId() + "/" + mapEntry.getKey());
             zip.putNextEntry(entry);
             zip.write(mapEntry.getValue());
             zip.closeEntry();
