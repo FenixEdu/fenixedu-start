@@ -110,7 +110,7 @@ public class StartController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/zip");
-        headers.add("Content-Disposition", "attachment; filename=\"" + request.getArtifactId() + "\"");
+        headers.add("Content-Disposition", "attachment; filename=\"" + request.getArtifactId() + ".zip\"");
         return new ResponseEntity<>(stream.toByteArray(), headers, HttpStatus.OK);
     }
 
