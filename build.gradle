@@ -34,7 +34,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("com.google.code.gson:gson:2.5")
-    compile("com.mitchellbosecke:pebble:1.6.0")
+    compile("com.mitchellbosecke:pebble:1.1.0")
     compile("org.fenixedu:fenixedu-canvas:2.0.0")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
