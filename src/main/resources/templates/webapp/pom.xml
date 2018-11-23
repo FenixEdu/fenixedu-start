@@ -19,7 +19,7 @@
 
     <properties>
         <version.ch.qos.logback.logback.classic>1.1.2</version.ch.qos.logback.logback.classic>
-        <version.org.fenixedu.ashes.theme>1.1.1</version.org.fenixedu.ashes.theme>
+        <version.org.fenixedu.ashes.theme>2.0.0</version.org.fenixedu.ashes.theme>
         <version.org.fenixedu.bennu>{{request.bennuVersion}}</version.org.fenixedu.bennu>
     </properties>
 
