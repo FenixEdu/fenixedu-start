@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 Instituto Superior Técnico
+ * Copyright 2018 Instituto Superior Técnico
  * This project is part of the FenixEdu Project: https://fenixedu.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,10 +20,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @ComponentScan("org.fenixedu.start")
 @EnableAutoConfiguration
+@EnableScheduling
 public class Application {
 
     public static void main(String[] args) {
