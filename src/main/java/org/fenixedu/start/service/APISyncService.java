@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 Instituto Superior Técnico
+ * Copyright 2018 Instituto Superior Técnico
  * This project is part of the FenixEdu Project: https://fenixedu.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import com.google.gson.JsonParser;
 import org.fenixedu.start.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
@@ -31,7 +31,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 @Service
-public class APISyncService implements InitializingBean {
+public class APISyncService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -42,7 +42,8 @@ public class APISyncService implements InitializingBean {
         Map<String, List<Version>> versions = new HashMap<>();
         for (String project : Arrays.asList("bennu", "bennu-spring", "fenixedu-maven")) {
             try {
-                ResponseEntity<String> resp = new RestTemplate().getForEntity("https://api.github.com/repos/FenixEdu/" + project + "/tags", String.class);
+                ResponseEntity<String> resp = new RestTemplate()
+                        .getForEntity("https://api.github.com/repos/FenixEdu/" + project + "/tags", String.class);
                 JsonArray array = new JsonParser().parse(resp.getBody()).getAsJsonArray();
                 List<Version> ownVersions = new ArrayList<>();
                 versions.put(project, ownVersions);
@@ -61,6 +62,7 @@ public class APISyncService implements InitializingBean {
         return versions;
     }
 
+    @Scheduled(fixedRateString = "${reload.versions.timer.in.milliseconds:3600000}")
     public void reload() {
         this.versions = syncVersions();
         logger.info("Initialized module versions.");
@@ -69,9 +71,4 @@ public class APISyncService implements InitializingBean {
         });
     }
 
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        reload();
-    }
 }
