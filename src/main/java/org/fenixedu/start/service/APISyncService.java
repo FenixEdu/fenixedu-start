@@ -40,7 +40,7 @@ public class APISyncService {
     public Map<String, List<Version>> syncVersions() {
         logger.info("Synchronizing with the Github API");
         Map<String, List<Version>> versions = new HashMap<>();
-        for (String project : Arrays.asList("bennu", "bennu-spring", "fenixedu-maven")) {
+        for (String project : Arrays.asList("bennu", "bennu-spring", "fenixedu-maven", "ashes-theme")) {
             try {
                 ResponseEntity<String> resp = new RestTemplate()
                         .getForEntity("https://api.github.com/repos/FenixEdu/" + project + "/tags", String.class);
